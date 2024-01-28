@@ -13,8 +13,42 @@ let calculations = []
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
+app.get('/calculations', (req, res) => {
+  res.send(calculations)
+})
 
 // POST /calculations
+app.post('/calculations', function (req, res) {
+  console.log(req.body);
+  let newCalculations = req.body
+  let operator = newCalculations.operator
+
+  let result;
+  let numOne = parseFloat(newCalculations.numOne);
+  let numTwo = parseFloat(newCalculations.numTwo);
+  if (operator === '+') {
+    result = numOne + numTwo
+    console.log(result);
+  } else if (operator === '-') {
+    result = numOne - numTwo
+    console.log(result);
+  } else if (operator === '*') {
+    result = numOne * numTwo
+    console.log(result);
+  } else if (operator === '/') {
+    result = numOne / numTwo
+    console.log(result)
+  };
+  newCalculations.result = result
+  calculations.push({
+    numOne: newCalculations.numOne,
+    numTwo: newCalculations.numTwo,
+    operator: newCalculations.operator,
+    result: newCalculations.result
+  })
+  res.send(201)
+  console.log('New Calculations ', calculations)
+})
 
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:

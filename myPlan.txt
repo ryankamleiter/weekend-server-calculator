@@ -1,0 +1,32 @@
+RULES:
+- All math must be implemented in the server
+- calculation history must be in server
+- client code must ask server for calculation history and apply to dom
+- get new calculation data from user input
+
+---Things to-do CLIENT SIDE----
+- use a get request to display history into section with data id of "resultHistory"
+- use a get request to display the most recent calculation to a section with data id of "recentResult"
+- when the = button is clicked, post an object to /calculations
+
+---HTML---
+- within the calculator form, make an interface to interact with (numbers and operators and clear)
+
+---TO-DO SERVER SIDE---
+- create a get route for /calculations to send the calculations array back to the client
+    array is formated as follows
+      [
+    {
+      numOne: 3,
+      numTwo: 5,
+      operator: '+',
+      result: 8
+    },
+    {
+      numOne: 11,
+      numTwo: 7,
+      operator: '-',
+      result: 4
+    }
+  ]
+- 
